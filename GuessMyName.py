@@ -89,16 +89,21 @@ def genderWord (letter) :
     else :
         return (False)
 
-# function to get the initial letter of the name
+# function to get the initial letter of the name with "a" or "an" in front
 def initCap (strng) :
     capstrng = strng.capitalize()
-    return (capstrng[0])
-#END FUNCTIONS
+    if capstrng in ["A", "E", "F", "H", "I", "L", "M", "N", "O", "R", "S", "U", "X"] :
+        article = ("an")
+    else :
+        article = ("a")
+    return (article + " " + capstrng[0])
 
 #function to make guesses and answers lower case for easy comparison
 def flatten (strng) :
     flatstrng = strng.lower()
     return (flatstrng)
+
+#END FUNCTIONS
 
 #WELCOME MESSAGE
 print ("Welcome to GUESS MY NAME. You have 3 chances to guess my name.\n")
@@ -121,7 +126,7 @@ while playAgain == "y" :
     #print (getLen)
 
     #FIRST CLUE
-    print ("My name starts with a " + getInitial + " and is usually a " + getGender + " name.")
+    print ("My name starts with " + getInitial + " and is usually a " + getGender + " name.")
     print (getClue)
 
     tries = 0
